@@ -1,0 +1,60 @@
+tabla:pagos_oc
+estado: 2=pendiente
+	3=autorizado
+	1=pagado
+	0=anulado
+tabla ordenes
+estado: 0 baja
+        1 pendiente de autorizacion
+        2 autorizada
+	3 Pagada
+	4 cancelación anticipada
+	5 Anulada por error en la generación
+
+archivo function en add_pago
+if(response != 'error'){
+ 					var info = JSON.stringify(response);
+ 					$('.namepago').html(info.nro_orden);
+ 					$('.namecuota').html(info.nro_cuota);
+ 				console.log(info.nro_cuota);
+	
+
+
+TAREAS POR COMPLETAR
+1)Listado de ordenes de compra: por afiliado, por financiera, por estado, por nro de orden OK!!
+2) listado de ordenes de compra entre fechas OK!!!
+3)poder imprimir
+4)agregar la matriz de importe y costo de la cuota por cada una de las financieras
+5) arreglar el abonar de orden de compra: ok!!
+6) cambiar la estructura de la tabla afiliados y modificar: ABM OK!!!
+
+header.php
+<div class="modal">
+		<div class="bodyModal">
+			<form action="" method="post" name="form_add_pagos" id="form_add_pagos" onsubmit="event.preventDefault(); sendDataPago(); ">
+				<h1><i class="fas fa-check"></i> Confirmar pago</h1><br><br>
+				<h3 >Confirma el pago de la orden: </h3>
+				<h3 class="namepago" align="center">Confirma el pago de la orden: </h3><br>
+				<h3>y su nro de cuota: </h3>
+				<h3 class="namecuota" align="center">su nro de cuota: </h3><br>
+				<input type="hidden" name="id_orden" value="id_orden" required>
+				<input type="hidden" name="action" value="addPago" required>
+				<div class="alert alertAddPago"></div>
+				<button type="submit" class="btn_aceptar"><i class="fas fa-check"></i> Aceptar</button>
+				<a href="#" class="btn_cancel closeModal" onclick="closeModal();"><i class="fas fa-ban"></i> Cancelar</a>
+			</form>
+		</div>
+
+	</div>
+
+<?php if($_SESSION['rol'] == 1){ ?>
+						<div class="div_orden">
+							<button class="btn_anular_oc anular_oc" oc="<?php echo $data["nro_orden]; ?>"></b<i class="fas fa-ban"></i>utton>
+						</div>	
+						<?php }else{ ?>
+							<div class="div_orden">
+							<button type="button" class="btn_anular inactive"><i class="fas fa-ban"></i></button>
+						</div>	
+						<?php }
+						}
+						?>

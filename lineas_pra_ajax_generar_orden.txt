@@ -1,0 +1,30 @@
+//inserto orden
+					$query_insert = mysqli_query($conection,"INSERT INTO ordenes(id_afiliado, id_financiera, id_usuario, id_cuota, estado, n_cuotas, monto) 
+																		VALUES ('$afiliado','$financiera','$usuario_id','$cuota',$estado','$n_cuotas','$total')");
+					//si se inserta bien la orden agrego los pagos
+					if($query_insert){
+						//extraigo el ultimo id_orden generado
+						$query_max($conection,"SELECT max(id_orden) FROM ordenes");
+						$max = mysqli_fetch_assoc($query_max);
+						$max_orden=$max['max(id_orden)']; 
+
+						//inserto los registros en la tabla pagos
+							for ($cont=1; $cont<=$n_cuotas; $cont++){
+													
+							$query_insert_pagos = mysqli_query($conection,"INSERT INTO pagos_oc(id_orden, importe_cuota, id_usuario, nro_cuota, estado,fecha_vencimiento) VALUES ('$max_orden','$importe','$usuario_id','$cont','2','$fecha')");
+							
+							$mes = $mes +1;
+							
+								if ($mes>=13){
+									$mes=1;
+									$anio= $anio+1;
+								}
+							
+							$fecha=$mes ."/". $anio;
+							}
+					}else{
+						echo "error";
+					}
+						
+					$info=mysqli_fetch_assoc($query_cuota);
+					echo json_encode($info,JSON_UNESCAPED_UNICODE);

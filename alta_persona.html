@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Alta de Afiliados</title>
+  <link rel="icon" href="imagenes/apunju2.jpg" type="image/jpeg"
+  sizes="24x16">
+  <link rel="stylesheet" href="misestilos.css">
+  <meta charset="utf-8">
+</head>
+<body>
+<form name="Alta de personas" action="altas/alta_afiliado.php" method="post">
+  <h4>Nombre:</h3>
+  <input type="text" name="nombre" id="nombre" />
+
+<p>
+  <h4>Apellido:</h3>
+  <input type="text" name="apellido" id="apellido" />
+</p>
+
+<h4>Tipo de documento:</h3>
+<label><input type="radio" name="tipo_doc" value="DNI" checked> DNI </label>
+<label><input type="radio" name="tipo_doc" value="LC" checked> LC </label>
+<label><input type="radio" name="tipo_doc" value="DNT" checked> DNT </label>
+<p>
+  <h4>Número de documento(sin puntos):</h3>
+  <input type="text" name="nro_doc" id="nro_doc" />
+</p>
+<p>
+  <h4>Legajo Personal:</h3>
+  <input type="text" name="legajo" id="legajo" />
+</p>
+<p><input type="reset" value="Borrar"></p>
+<p><input type="submit" value="Alta"></p>
+
+
+
+</form>
+
+</body>
+
+</html>

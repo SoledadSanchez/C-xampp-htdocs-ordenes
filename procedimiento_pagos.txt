@@ -1,0 +1,16 @@
+DELIMITER $$
+
+	CREATE PROCEDURE abonar_cuota(orden int, cuota int)
+    BEGIN
+    	DECLARE contador int;
+	DECLARE estado_orden int;
+                
+        UPDATE pagos_oc SET estado = 1 WHERE nro_orden = orden and nro_cuota=cuota;
+        SELECT count(*) INTO contador FROM pagos_oc WHERE nro_orden = orden and estado=1;
+        UPDATE ordenes SET estado = 3 WHERE nro_orden = orden and n_cuotas=contador;
+	SELECT estado INTO estado_orden FROM ordenes WHERE nro_orden = orden;
+        
+        SELECT estado_orden ;
+        
+    END;$$
+DELIMITER ;

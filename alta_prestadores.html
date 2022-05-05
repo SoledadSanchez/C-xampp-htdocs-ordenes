@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Alta de Prestadores</title>
+  <link rel="icon" href="imagenes/apunju2.jpg" type="image/jpeg"
+  sizes="24x16">
+  <link rel="stylesheet" href="misestilos.css">
+  <meta charset="utf-8">
+</head>
+<body>
+<form name="Alta de Prestadores" action="altas/alta_prestador.php" method="post">
+  <h4>Razón Social:</h4>
+  <input type="text" name="razon_social" id="razon_social" />
+
+<p>
+  <h4>Cuil:</h4>
+  <input type="text" name="cuil" id="cuil" />
+</p>
+
+
+  <h4>Intereses:</h4>
+  <input type="number" name="interes" min="0" max="100">
+
+</p>
+<p>
+  <h4>Domicilio:</h4>
+  <input type="text" name="domicilio" id="domicilio" />
+</p>
+<p>
+  <h4>Correo electrónico:</h4>
+  <input type="email" name="email" id="email" />
+</p>
+<p>
+  <h4>Telefóno o Celular:</h4>
+  <input type="text" name="telefono" id="telefono" />
+</p>
+<p><input type="reset" value="Borrar"></p>
+<p><input type="submit" value="Alta"></p>
+
+
+
+</form>
+
+</body>
+
+</html>
